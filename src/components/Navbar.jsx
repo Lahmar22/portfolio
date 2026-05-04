@@ -53,7 +53,7 @@ export default function Navbar() {
           onClick={(e) => { e.preventDefault(); scrollTo("#home"); }}
           className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"
         >
-          &lt;Safiy /&gt;
+          &lt;Lahmar /&gt;
         </a>
 
         {/* Desktop links */}

@@ -1,9 +1,8 @@
 import avatarImg from "../assets/image.jpeg";
 
 const stats = [
-  { value: "3+", label: "Years Experience" },
-  { value: "20+", label: "Projects Done" },
-  { value: "10+", label: "Happy Clients" },
+  { value: "1+", label: "Years Experience" },
+  { value: "30+", label: "Projects Done" },
   { value: "5+", label: "Technologies" },
 ];
 
@@ -51,10 +50,10 @@ export default function About() {
             {/* Info grid */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {[
-                { label: "Name", value: "Safiy" },
-                { label: "Email", value: "safiy@example.com" },
+                { label: "Name", value: "Lahmar Zakariae" },
+                { label: "Email", value: "zakariaelahmar24@gmail.com" },
                 { label: "Location", value: "Morocco" },
-                { label: "Availability", value: "Open to Work ✅" },
+                { label: "Availability", value: "Open to Work" },
               ].map((item) => (
                 <div key={item.label} className="flex gap-3">
                   <span className="text-purple-400 font-semibold text-sm min-w-[80px]">{item.label}:</span>

@@ -27,8 +27,8 @@ export default function Contact() {
         </svg>
       ),
       label: "Email",
-      value: "safiy@example.com",
-      href: "mailto:safiy@example.com",
+      value: "zakariaelahmar24@gmail.com",
+      href: "mailto:zakariaelahmar24@gmail.com",
     },
     {
       icon: (
@@ -48,8 +48,8 @@ export default function Contact() {
         </svg>
       ),
       label: "GitHub",
-      value: "github.com/safiy",
-      href: "https://github.com",
+      value: "Lahmar Zakariae",
+      href: "https://github.com/Lahmar22",
     },
     {
       icon: (
@@ -58,8 +58,8 @@ export default function Contact() {
         </svg>
       ),
       label: "LinkedIn",
-      value: "linkedin.com/in/safiy",
-      href: "https://linkedin.com",
+      value: "Lahmar Zakariae",
+      href: "https://www.linkedin.com/in/zakariae-lahmar",
     },
   ];
 
@@ -104,17 +104,7 @@ export default function Contact() {
               </div>
             ))}
 
-            {/* Availability badge */}
-            <div className="mt-2 bg-green-500/10 border border-green-500/30 rounded-2xl p-5 flex items-center gap-3">
-              <div className="relative">
-                <div className="w-3 h-3 bg-green-400 rounded-full" />
-                <div className="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-50" />
-              </div>
-              <div>
-                <p className="text-green-400 font-semibold text-sm">Currently Available</p>
-                <p className="text-gray-500 text-xs">Open to freelance & full-time opportunities</p>
-              </div>
-            </div>
+            
           </div>
 
           {/* Contact form */}
