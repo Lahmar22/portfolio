@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import cv from "../assets/lahmarcv.pdf";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -40,11 +41,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
           ? "bg-gray-950/90 backdrop-blur-md shadow-lg shadow-purple-900/20 border-b border-white/5"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
@@ -63,17 +63,15 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                className={`text-sm font-medium transition-all duration-300 relative group ${
-                  active === link.href.slice(1)
+                className={`text-sm font-medium transition-all duration-300 relative group ${active === link.href.slice(1)
                     ? "text-purple-400"
                     : "text-gray-400 hover:text-white"
-                }`}
+                  }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-linear-to-r from-purple-400 to-cyan-400 transition-all duration-300 ${
-                    active === link.href.slice(1) ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-linear-to-r from-purple-400 to-cyan-400 transition-all duration-300 ${active === link.href.slice(1) ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
                 />
               </a>
             </li>
@@ -82,11 +80,13 @@ export default function Navbar() {
 
         {/* CTA */}
         <a
-          href="#contact"
-          onClick={(e) => { e.preventDefault(); scrollTo("#contact"); }}
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-linear-to-r from-purple-600 to-cyan-600 text-white text-sm font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25"
+          href={cv} download
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-linear-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25"
         >
-          Hire Me
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Download CV
         </a>
 
         {/* Hamburger */}
@@ -103,9 +103,8 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden transition-all duration-300 overflow-hidden bg-gray-950/95 backdrop-blur-md border-t border-white/5 ${
-          menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`md:hidden transition-all duration-300 overflow-hidden bg-gray-950/95 backdrop-blur-md border-t border-white/5 ${menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <ul className="flex flex-col px-6 py-4 gap-4">
           {navLinks.map((link) => (
