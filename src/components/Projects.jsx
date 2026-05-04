@@ -212,7 +212,7 @@ export default function Projects() {
         {/* GitHub CTA */}
         <div className="text-center mt-14">
           <a
-            href="https://github.com"
+            href="https://github.com/Lahmar22"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-purple-500/40 text-gray-300 font-semibold hover:border-purple-400 hover:text-white hover:bg-purple-500/10 transition-all duration-300 group"
