@@ -97,16 +97,16 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 bg-gray-950 relative overflow-hidden">
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-64 bg-purple-800/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-200 h-64 bg-purple-800/10 rounded-full blur-3xl" />
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">What I've Built</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            My <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Projects</span>
+            My <span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Projects</span>
           </h2>
-          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
+          <div className="mt-4 w-16 h-1 bg-linear-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
         </div>
 
         {/* Filter tabs */}
@@ -116,7 +116,7 @@ export default function Projects() {
               key={f}
               onClick={() => setFilter(f)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === f
-                ? "bg-gradient-to-r from-purple-600 to-cyan-600 text-white shadow-lg shadow-purple-500/25"
+                ? "bg-linear-to-r from-purple-600 to-cyan-600 text-white shadow-lg shadow-purple-500/25"
                 : "bg-gray-800/60 border border-white/5 text-gray-400 hover:text-white hover:border-white/20"
                 }`}
             >
@@ -143,7 +143,7 @@ export default function Projects() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 ) : (
-                  <div className={`w-full h-full bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center`}>
+                  <div className={`w-full h-full bg-linear-to-br ${gradients[i % gradients.length]} flex items-center justify-center`}>
                     <span className="text-6xl opacity-40">
                       {["💻", "📊", "✅", "💄", "🚕", "⚡"][i % 6]}
                     </span>
@@ -164,7 +164,7 @@ export default function Projects() {
                   </a>
                   <a
                     href={project.demo}
-                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white text-sm font-medium hover:opacity-90 transition-all duration-200"
+                    className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-purple-600 to-cyan-600 rounded-full text-white text-sm font-medium hover:opacity-90 transition-all duration-200"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -175,7 +175,7 @@ export default function Projects() {
 
                 {/* Featured badge */}
                 {project.featured && (
-                  <div className="absolute top-3 left-3 bg-gradient-to-r from-purple-600 to-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                  <div className="absolute top-3 left-3 bg-linear-to-r from-purple-600 to-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                     ⭐ Featured
                   </div>
                 )}

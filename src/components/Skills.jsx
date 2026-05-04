@@ -58,7 +58,7 @@ function SkillBar({ name, level, color, animate }) {
       </div>
       <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
         <div
-          className={`h-full bg-gradient-to-r ${color} rounded-full transition-all duration-1000 ease-out`}
+          className={`h-full bg-linear-to-r ${color} rounded-full transition-all duration-1000 ease-out`}
           style={{ width: animate ? `${level}%` : "0%" }}
         />
       </div>
@@ -96,9 +96,9 @@ export default function Skills() {
         <div className="text-center mb-16">
           <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">What I Know</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            My <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Skills</span>
+            My <span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Skills</span>
           </h2>
-          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
+          <div className="mt-4 w-16 h-1 bg-linear-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
         </div>
 
         {/* Tech cloud */}
@@ -122,7 +122,7 @@ export default function Skills() {
               onClick={() => setActiveTab(i)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 ${
                 activeTab === i
-                  ? "bg-gradient-to-r from-purple-600 to-cyan-600 text-white shadow-lg shadow-purple-500/25"
+                  ? "bg-linear-to-r from-purple-600 to-cyan-600 text-white shadow-lg shadow-purple-500/25"
                   : "bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 border border-white/5"
               }`}
             >

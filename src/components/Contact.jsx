@@ -65,16 +65,16 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 bg-gray-900 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-64 bg-purple-800/10 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-64 bg-purple-800/10 rounded-full blur-3xl" />
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">Get In Touch</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Contact <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Me</span>
+            Contact <span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Me</span>
           </h2>
-          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
+          <div className="mt-4 w-16 h-1 bg-linear-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
           <p className="text-gray-500 mt-4 max-w-lg mx-auto">
             Have a project in mind or want to collaborate? I'd love to hear from you. Drop me a message!
           </p>
@@ -88,7 +88,7 @@ export default function Contact() {
                 key={info.label}
                 className="flex items-center gap-4 bg-gray-800/40 border border-white/5 rounded-2xl p-5 hover:border-purple-500/30 transition-all duration-300 group"
               >
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-purple-600/20 to-cyan-600/20 flex items-center justify-center text-purple-400 group-hover:from-purple-600/40 group-hover:to-cyan-600/40 transition-all duration-300 flex-shrink-0 border border-purple-500/20">
+                <div className="w-11 h-11 rounded-xl bg-linear-to-br from-purple-600/20 to-cyan-600/20 flex items-center justify-center text-purple-400 group-hover:from-purple-600/40 group-hover:to-cyan-600/40 transition-all duration-300 shrink-0 border border-purple-500/20">
                   {info.icon}
                 </div>
                 <div>
@@ -167,7 +167,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={sending || sent}
-              className="w-full flex items-center justify-center gap-3 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-purple-500/25 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-3 py-3.5 rounded-xl bg-linear-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-purple-500/25 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {sent ? (
                 <>

@@ -51,7 +51,7 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={(e) => { e.preventDefault(); scrollTo("#home"); }}
-          className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"
+          className="text-2xl font-bold bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"
         >
           &lt;Lahmar /&gt;
         </a>
@@ -71,7 +71,7 @@ export default function Navbar() {
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-cyan-400 transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-linear-to-r from-purple-400 to-cyan-400 transition-all duration-300 ${
                     active === link.href.slice(1) ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 />
@@ -84,7 +84,7 @@ export default function Navbar() {
         <a
           href="#contact"
           onClick={(e) => { e.preventDefault(); scrollTo("#contact"); }}
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 text-white text-sm font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25"
+          className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-linear-to-r from-purple-600 to-cyan-600 text-white text-sm font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25"
         >
           Hire Me
         </a>

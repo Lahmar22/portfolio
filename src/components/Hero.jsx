@@ -37,7 +37,7 @@ export default function Hero() {
       {/* Background gradient blobs */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-purple-700/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-cyan-700/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-900/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-violet-900/10 rounded-full blur-3xl" />
 
       {/* Grid overlay */}
       <div
@@ -57,7 +57,7 @@ export default function Hero() {
           </p>
           <h1 className="text-xl md:text-7xl font-extrabold text-white leading-tight mb-4">
             LAHMAR Zakariae
-            <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="block bg-linear-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
               Full Stack Web Developer
             </span>
           </h1>
@@ -65,7 +65,7 @@ export default function Hero() {
           {/* Typing animation */}
           <div className="flex items-center gap-2 justify-center md:justify-start mb-6 h-8">
             <span className="text-gray-400 text-lg">&lt;</span>
-            <span className="text-cyan-400 font-mono text-lg font-semibold min-w-[250px]">
+            <span className="text-cyan-400 font-mono text-lg font-semibold min-w-62.5">
               {displayed}
               <span className="animate-pulse">|</span>
             </span>
@@ -81,7 +81,7 @@ export default function Hero() {
             <a
               href="#projects"
               onClick={(e) => { e.preventDefault(); document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }); }}
-              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-xl shadow-purple-500/30"
+              className="px-8 py-3.5 rounded-full bg-linear-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-xl shadow-purple-500/30"
             >
               View My Work
             </a>
@@ -126,13 +126,13 @@ export default function Hero() {
         </div>
 
         {/* Avatar */}
-        <div className="relative flex-shrink-0">
+        <div className="relative shrink-0">
           <div className="relative w-56 h-56 md:w-72 md:h-72">
             {/* Rotating ring */}
             <div className="absolute inset-0 rounded-full border-2 border-dashed border-purple-500/40 animate-spin" style={{ animationDuration: "12s" }} />
             <div className="absolute inset-3 rounded-full border border-cyan-500/30 animate-spin" style={{ animationDuration: "8s", animationDirection: "reverse" }} />
             {/* Glow */}
-            <div className="absolute inset-4 rounded-full bg-gradient-to-br from-purple-600/30 to-cyan-600/30 blur-xl" />
+            <div className="absolute inset-4 rounded-full bg-linear-to-br from-purple-600/30 to-cyan-600/30 blur-xl" />
             {/* Image */}
             <div className="absolute inset-4 rounded-full overflow-hidden border-2 border-purple-500/50 shadow-2xl shadow-purple-500/30">
               <img src={avatarImg} alt="Safiy - Developer" className="w-full h-full object-cover" />

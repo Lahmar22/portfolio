@@ -17,20 +17,20 @@ export default function About() {
         <div className="text-center mb-16">
           <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">Who I Am</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            About <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Me</span>
+            About <span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Me</span>
           </h2>
-          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
+          <div className="mt-4 w-16 h-1 bg-linear-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
         </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* Image */}
-          <div className="relative flex-shrink-0">
+          <div className="relative shrink-0">
             <div className="relative w-64 h-64 md:w-80 md:h-80">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-cyan-600 rounded-2xl rotate-6 opacity-30" />
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-cyan-600 rounded-2xl rotate-3 opacity-20" />
+              <div className="absolute inset-0 bg-linear-to-br from-purple-600 to-cyan-600 rounded-2xl rotate-6 opacity-30" />
+              <div className="absolute inset-0 bg-linear-to-br from-purple-600 to-cyan-600 rounded-2xl rotate-3 opacity-20" />
               <div className="relative rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl shadow-purple-500/20">
                 <img src={avatarImg} alt="About Safiy" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/50 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-gray-950/50 to-transparent" />
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function About() {
                 { label: "Availability", value: "Open to Work" },
               ].map((item) => (
                 <div key={item.label} className="flex gap-3">
-                  <span className="text-purple-400 font-semibold text-sm min-w-[80px]">{item.label}:</span>
+                  <span className="text-purple-400 font-semibold text-sm min-w-20">{item.label}:</span>
                   <span className="text-gray-300 text-sm">{item.value}</span>
                 </div>
               ))}
@@ -64,7 +64,7 @@ export default function About() {
 
             <a
               href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-linear-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -81,7 +81,7 @@ export default function About() {
               key={s.label}
               className="bg-gray-900/60 border border-white/5 rounded-2xl p-6 text-center hover:border-purple-500/40 hover:bg-gray-900/80 transition-all duration-300 group"
             >
-              <p className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
+              <p className="text-4xl md:text-5xl font-extrabold bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
                 {s.value}
               </p>
               <p className="text-gray-500 text-sm">{s.label}</p>
