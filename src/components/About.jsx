@@ -3,7 +3,7 @@ import avatarImg from "../assets/image.jpeg";
 const stats = [
   { value: "1+", label: "Years Experience" },
   { value: "30+", label: "Projects Done" },
-  { value: "5+", label: "Technologies" },
+  { value: "10+", label: "Technologies" },
 ];
 
 export default function About() {
