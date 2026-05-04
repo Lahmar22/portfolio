@@ -53,7 +53,7 @@ export default function Navbar() {
           onClick={(e) => { e.preventDefault(); scrollTo("#home"); }}
           className="text-2xl font-bold bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"
         >
-          &lt;Lahmar /&gt;
+          &lt;LZ /&gt;
         </a>
 
         {/* Desktop links */}

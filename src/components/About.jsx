@@ -42,10 +42,10 @@ export default function About() {
               Full Stack Developer based in <span className="text-purple-400">Morocco 🇲🇦</span>
             </h3>
             <p className="text-gray-400 leading-relaxed mb-4">
-              I'm a passionate Full Stack Developer with over 3 years of experience building modern web applications. I specialize in creating seamless user experiences with clean, maintainable code.
+              I'm a Full Stack Developer with over 1 year of experience building modern web applications. I specialize in creating seamless user experiences with clean, maintainable code.
             </p>
             <p className="text-gray-400 leading-relaxed mb-6">
-              My expertise spans from crafting pixel-perfect front-end interfaces with React to architecting robust back-end systems with Node.js and Laravel. I'm always eager to learn new technologies and tackle challenging problems.
+              My expertise spans front-end development with React, Vue.js, Angular, HTML, CSS, and JavaScript, as well as back-end development with Laravel, PHP, Node.js, Java, and JEE. I build user-friendly interfaces and design robust, scalable systems, and I’m always eager to learn new technologies and tackle challenging problems.
             </p>
 
             {/* Info grid */}

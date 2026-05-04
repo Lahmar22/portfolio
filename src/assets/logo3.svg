@@ -1,0 +1,27 @@
+<svg width="100%" viewBox="0 0 680 320" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">LZ developer logo icon no background</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Logo icon showing LZ initials between code brackets, transparent background</desc>
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2"/>
+      <stop offset="100%" style="stop-color:#7B5EA7"/>
+    </linearGradient>
+    <linearGradient id="zGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5B8DEF"/>
+      <stop offset="100%" style="stop-color:#9B6DD4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left bracket < -->
+  <text x="175" y="210" font-family="'SF Mono', monospace" font-size="110" font-weight="300" fill="url(#blueGrad)" text-anchor="middle" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;SF Mono&quot;, monospace;font-size:110px;font-weight:300;text-anchor:middle;dominant-baseline:auto">&lt;</text>
+
+  <!-- Right bracket /> -->
+  <text x="505" y="210" font-family="'SF Mono', monospace" font-size="110" font-weight="300" fill="url(#blueGrad)" text-anchor="middle" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;SF Mono&quot;, monospace;font-size:110px;font-weight:300;text-anchor:middle;dominant-baseline:auto">/&gt;</text>
+
+  <!-- L letter -->
+  <text x="295" y="210" font-family="Georgia, serif" font-size="130" font-weight="700" fill="url(#blueGrad)" text-anchor="middle" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, serif;font-size:130px;font-weight:700;text-anchor:middle;dominant-baseline:auto">L</text>
+
+  <!-- Z letter overlapping -->
+  <text x="385" y="225" font-family="Georgia, serif" font-size="130" font-weight="700" fill="url(#zGrad)" text-anchor="middle" opacity="0.95" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.95;font-family:Georgia, serif;font-size:130px;font-weight:700;text-anchor:middle;dominant-baseline:auto">Z</text>
+
+</svg>

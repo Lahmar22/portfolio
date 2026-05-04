@@ -73,7 +73,7 @@ export default function Hero() {
           </div>
 
           <p className="text-gray-400 text-lg leading-relaxed max-w-lg mx-auto md:mx-0 mb-8">
-            Passionate about crafting beautiful, performant web experiences. I turn ideas into elegant digital solutions using modern technologies.
+            Focused on crafting beautiful, performant web experiences. I turn ideas into elegant digital solutions using modern technologies.
           </p>
 
           {/* CTA Buttons */}

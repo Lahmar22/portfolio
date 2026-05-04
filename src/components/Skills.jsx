@@ -1,4 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import { FaLaravel, FaNodeJs, FaGitAlt, FaFigma, FaReact, FaJava, FaJs  } from "react-icons/fa";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { SiMongodb, SiTypescript, SiPhp, SiPostgresql } from "react-icons/si";
+import { GrMysql, GrDocker } from "react-icons/gr";
 
 const skillCategories = [
   {
@@ -21,6 +25,9 @@ const skillCategories = [
       { name: "REST APIs", level: 88, color: "from-purple-500 to-violet-500" },
       { name: "MySQL / PostgreSQL", level: 80, color: "from-blue-400 to-sky-500" },
       { name: "MongoDB", level: 72, color: "from-green-400 to-lime-500" },
+      { name: "PHP", level: 78, color: "from-indigo-500 to-purple-500" },
+      { name: "PostgreSQL", level: 80, color: "from-sky-500 to-blue-500" },
+      { name: "JEE", level: 72, color: "from-orange-500 to-red-500" },
     ],
   },
   {
@@ -37,16 +44,22 @@ const skillCategories = [
 ];
 
 const techIcons = [
-  { name: "React", emoji: "⚛️" },
-  { name: "Node.js", emoji: "🟢" },
-  { name: "Laravel", emoji: "🔴" },
-  { name: "TailwindCSS", emoji: "🌊" },
-  { name: "MongoDB", emoji: "🍃" },
-  { name: "MySQL", emoji: "🐬" },
-  { name: "Docker", emoji: "🐳" },
-  { name: "Git", emoji: "🔀" },
-  { name: "TypeScript", emoji: "📘" },
-  { name: "Figma", emoji: "🎨" },
+  { name: "Java", emoji: <FaJava className="text-red-500" /> },
+  { name: "React", emoji: <FaReact className="text-blue-500" /> },
+  { name: "Node.js", emoji: <FaNodeJs className="text-green-500" /> },
+  { name: "Laravel", emoji: <FaLaravel className="text-red-500" /> },
+  { name: "TailwindCSS", emoji: <RiTailwindCssFill className="text-cyan-500" /> },
+  { name: "MongoDB", emoji: <SiMongodb className="text-green-500" /> },
+  { name: "MySQL", emoji: <GrMysql className="text-blue-500" /> },
+  { name: "Docker", emoji: <GrDocker className="text-blue-500" /> },
+  { name: "Git", emoji: <FaGitAlt className="text-red-500" /> },
+  { name: "TypeScript", emoji: <SiTypescript className="text-blue-500" /> },
+  { name: "JavaScript", emoji: <FaJs className="text-yellow-500" /> },
+  { name: "Figma", emoji: <FaFigma className="text-pink-500" /> },
+  { name: "REST API", emoji: <FaJs className="text-orange-400" /> },
+  { name: "PHP", emoji: <SiPhp className="text-indigo-500" /> },
+  { name: "PostgreSQL", emoji: <SiPostgresql className="text-sky-500" /> },
+  { name: "JEE", emoji: <FaJava className="text-orange-600" /> },
 ];
 
 function SkillBar({ name, level, color, animate }) {

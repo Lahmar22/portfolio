@@ -11,7 +11,7 @@ export default function Footer() {
             onClick={(e) => { e.preventDefault(); document.querySelector("#home")?.scrollIntoView({ behavior: "smooth" }); }}
             className="text-2xl font-bold bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"
           >
-            &lt;Lahmar /&gt;
+            &lt;LZ /&gt;
           </a>
 
           {/* Nav links */}
@@ -52,8 +52,10 @@ export default function Footer() {
 
         <div className="mt-8 pt-6 border-t border-white/5 text-center">
           <p className="text-gray-600 text-sm">
-            © {year} <span className="text-gray-500">Lahmar</span> · Crafted by Lahmar
-            
+            © {year} <span className="text-gray-500">Zakariae Lahmar</span>. All rights reserved.
+          </p>
+          <p className="text-gray-500 text-xs mt-2">
+            Crafted with passion | <a href="#contact" className="text-purple-400 hover:text-purple-300 transition-colors">Get in Touch</a>
           </p>
         </div>
       </div>
