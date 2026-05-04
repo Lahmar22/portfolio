@@ -1,4 +1,5 @@
 import avatarImg from "../assets/image.jpeg";
+import cv from "../assets/lahmarcv.pdf";
 
 const stats = [
   { value: "1+", label: "Years Experience" },
@@ -63,7 +64,7 @@ export default function About() {
             </div>
 
             <a
-              href="#"
+              href={cv} download
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-linear-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
