@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 import avatarImg from "../assets/image.jpeg";
 
-const roles = ["Full Stack Developer", "React Specialist", "UI/UX Enthusiast", "Problem Solver"];
+const roles = [
+  "Full Stack Developer",
+  "Java & JEE Developer",
+  "Laravel & PHP Developer",
+  "Node.js Developer",
+  "Spring Boot Developer",
+  "UI/UX Enthusiast",
+  "Problem Solver"
+];
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);

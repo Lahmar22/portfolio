@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
 
-
-
-
 const filters = ["All", "Full Stack", "Frontend"];
 
 const gradients = [
@@ -19,46 +16,74 @@ export default function Projects() {
   const [hovered, setHovered] = useState(null);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const perPage = 6;
+
+  const fetchRepos = async (pageNum) => {
+    try {
+      const response = await fetch(
+        `https://api.github.com/users/Lahmar22/repos?sort=updated&per_page=6&page=${pageNum}`
+      );
+
+      const repos = await response.json();
+
+      const formattedProjects = repos.map((repo) => ({
+        id: repo.id,
+        title: repo.name,
+        description: repo.description || "No description available.",
+        github: repo.html_url,
+        demo: repo.homepage || repo.html_url,
+        tags: repo.topics?.length
+          ? repo.topics
+          : [repo.language].filter(Boolean),
+        category:
+          repo.language === "JavaScript" ||
+            repo.language === "TypeScript" ||
+            repo.language === "React"
+            ? "Frontend"
+            : "Full Stack",
+        featured: repo.stargazers_count > 0,
+        image: null,
+      }));
+
+      return formattedProjects;
+    } catch (error) {
+      console.error("Error loading repositories:", error);
+      return [];
+    }
+  };
 
   useEffect(() => {
-    const fetchRepos = async () => {
+    const loadInitialRepos = async () => {
       try {
-        const response = await fetch(
-          "https://api.github.com/users/Lahmar22/repos?sort=updated&per_page=100"
-        );
+        // Fetch user info to get total public repos count
+        const userResponse = await fetch("https://api.github.com/users/Lahmar22");
+        const userData = await userResponse.json();
+        const totalRepos = userData.public_repos;
+        const calculatedPages = Math.ceil(totalRepos / perPage);
+        setTotalPages(calculatedPages);
 
-        const repos = await response.json();
-
-        const formattedProjects = repos.map((repo) => ({
-          id: repo.id,
-          title: repo.name,
-          description: repo.description || "No description available.",
-          github: repo.html_url,
-          demo: repo.homepage || repo.html_url,
-          tags: repo.topics?.length
-            ? repo.topics
-            : [repo.language].filter(Boolean),
-          category:
-            repo.language === "JavaScript" ||
-              repo.language === "TypeScript" ||
-              repo.language === "React"
-              ? "Frontend"
-              : "Full Stack",
-          featured: repo.stargazers_count > 0,
-          image: null,
-        }));
-
-        setProjects(formattedProjects);
+        // Fetch first page of repos
+        const repos = await fetchRepos(1);
+        setProjects(repos);
+        setLoading(false);
       } catch (error) {
-        console.error("Error loading repositories:", error);
-      } finally {
+        console.error("Error loading data:", error);
         setLoading(false);
       }
     };
 
-    fetchRepos();
+    loadInitialRepos();
   }, []);
 
+  const handlePageChange = async (pageNum) => {
+    setLoading(true);
+    const repos = await fetchRepos(pageNum);
+    setProjects(repos);
+    setPage(pageNum);
+    setLoading(false);
+  };
 
   if (loading) {
     return (
@@ -77,7 +102,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 bg-gray-950 relative overflow-hidden">
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-200 h-64 bg-purple-800/10 rounded-full blur-3xl" />
+      <div className="bottom-0 left-1/2 -translate-x-1/2 w-200 h-64 bg-purple-800/10 rounded-full blur-3xl" />
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
@@ -186,6 +211,24 @@ export default function Projects() {
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center gap-2 mt-8 mb-6">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+            <button
+              key={pageNum}
+              onClick={() => handlePageChange(pageNum)}
+              disabled={loading}
+              className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
+                page === pageNum
+                  ? "bg-linear-to-r from-purple-600 to-cyan-600 text-white shadow-lg shadow-purple-500/25"
+                  : "bg-gray-800/60 border border-white/5 text-gray-400 hover:text-white hover:border-white/20 disabled:opacity-50 disabled:cursor-not-allowed"
+              }`}
+            >
+              {pageNum}
+            </button>
           ))}
         </div>
 
