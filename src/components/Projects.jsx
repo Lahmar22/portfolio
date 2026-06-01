@@ -1,81 +1,7 @@
-import { useState } from "react";
-// import project1Img from "../assets/project1.png";
-// import project2Img from "../assets/project2.png";
+import { useState, useEffect } from "react";
 
-const projects = [
-  {
-    id: 1,
-    title: "ShopFlow E-Commerce",
-    category: "Full Stack",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    description:
-      "A full-featured e-commerce platform with product management, shopping cart, payment integration with Stripe, and real-time order tracking.",
-    image: null,
-    github: "https://github.com",
-    demo: "#",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Analytics Dashboard",
-    category: "Frontend",
-    tags: ["React", "TailwindCSS", "Chart.js", "REST API"],
-    description:
-      "A responsive analytics dashboard with interactive charts, KPI cards, and real-time data visualizations for business intelligence.",
-    image: null,
-    github: "https://github.com",
-    demo: "#",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Task Manager App",
-    category: "Full Stack",
-    tags: ["React", "Laravel", "MySQL", "JWT"],
-    description:
-      "A collaborative task management application with drag-and-drop boards, team collaboration, deadlines, and priority management.",
-    image: null,
-    github: "https://github.com",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "La Cosmetica Platform",
-    category: "Frontend",
-    tags: ["React", "TailwindCSS", "API Integration"],
-    description:
-      "A cosmetics tracking and management frontend with product catalogs, employee dashboards, and inventory visualization.",
-    image: null,
-    github: "https://github.com",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "TaxiGo Booking System",
-    category: "Full Stack",
-    tags: ["React", "Node.js", "Socket.io", "Maps API"],
-    description:
-      "A ride-hailing platform with real-time driver tracking, dynamic pricing, booking management and driver/client dashboards.",
-    image: null,
-    github: "https://github.com",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "EVolt Charging Stations",
-    category: "Full Stack",
-    tags: ["React", "Laravel", "PostgreSQL", "TailwindCSS"],
-    description:
-      "Electric vehicle charging station management platform with booking, reservation management and admin statistics.",
-    image: null,
-    github: "https://github.com",
-    demo: "#",
-    featured: false,
-  },
-];
+
+
 
 const filters = ["All", "Full Stack", "Frontend"];
 
@@ -91,9 +17,63 @@ const gradients = [
 export default function Projects() {
   const [filter, setFilter] = useState("All");
   const [hovered, setHovered] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const response = await fetch(
+          "https://api.github.com/users/Lahmar22/repos?sort=updated&per_page=100"
+        );
+
+        const repos = await response.json();
+
+        const formattedProjects = repos.map((repo) => ({
+          id: repo.id,
+          title: repo.name,
+          description: repo.description || "No description available.",
+          github: repo.html_url,
+          demo: repo.homepage || repo.html_url,
+          tags: repo.topics?.length
+            ? repo.topics
+            : [repo.language].filter(Boolean),
+          category:
+            repo.language === "JavaScript" ||
+              repo.language === "TypeScript" ||
+              repo.language === "React"
+              ? "Frontend"
+              : "Full Stack",
+          featured: repo.stargazers_count > 0,
+          image: null,
+        }));
+
+        setProjects(formattedProjects);
+      } catch (error) {
+        console.error("Error loading repositories:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRepos();
+  }, []);
+
+
+  if (loading) {
+    return (
+      <section className="py-24 bg-gray-950">
+        <div className="text-center text-white">
+          Loading projects...
+        </div>
+      </section>
+    );
+  }
 
   const filtered =
-    filter === "All" ? projects : projects.filter((p) => p.category === filter);
+    filter === "All"
+      ? projects
+      : projects.filter((p) => p.category === filter);
 
   return (
     <section id="projects" className="py-24 bg-gray-950 relative overflow-hidden">
