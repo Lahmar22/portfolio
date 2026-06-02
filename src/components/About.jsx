@@ -37,7 +37,7 @@ export default function About() {
           </div>
 
           {/* Content */}
-          <div className="flex-1">
+          <div className="flex-1 py-4">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Full Stack Developer based in <span className="text-purple-400">Morocco 🇲🇦</span>
             </h3>
