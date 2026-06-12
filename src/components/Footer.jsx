@@ -16,7 +16,7 @@ export default function Footer() {
 
           {/* Nav links */}
           <nav className="flex flex-wrap justify-center gap-6">
-            {["home", "about", "skills", "projects", "contact"].map((s) => (
+            {["home", "about", "skills", "projects", "certificats", "contact"].map((s) => (
               <a
                 key={s}
                 href={`#${s}`}

@@ -9,7 +9,7 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-gray-950 relative overflow-hidden">
+    <section id="about" className="py-16 bg-gray-950 relative overflow-hidden">
       {/* Decorative blob */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-purple-800/10 rounded-full blur-3xl" />
 
@@ -49,16 +49,24 @@ export default function About() {
             </p>
 
             {/* Info grid */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {[
                 { label: "Name", value: "Lahmar Zakariae" },
                 { label: "Email", value: "zakariaelahmar24@gmail.com" },
                 { label: "Location", value: "Morocco" },
                 { label: "Availability", value: "Open to Work" },
               ].map((item) => (
-                <div key={item.label} className="flex gap-3">
-                  <span className="text-purple-400 font-semibold text-sm min-w-20">{item.label}:</span>
-                  <span className="text-gray-300 text-sm">{item.value}</span>
+                <div
+                  key={item.label}
+                  className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 bg-gray-900/50 p-4 rounded-xl border border-gray-800"
+                >
+                  <span className="text-purple-400 font-semibold text-sm">
+                    {item.label}:
+                  </span>
+
+                  <span className="text-gray-300 text-sm break-all">
+                    {item.value}
+                  </span>
                 </div>
               ))}
             </div>

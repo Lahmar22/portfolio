@@ -101,8 +101,7 @@ export default function Projects() {
       : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-24 bg-gray-950 relative overflow-hidden">
-      <div className="bottom-0 left-1/2 -translate-x-1/2 w-200 h-64 bg-purple-800/10 rounded-full blur-3xl" />
+    <section id="projects" className="py-16 bg-gray-950 relative overflow-hidden">
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}

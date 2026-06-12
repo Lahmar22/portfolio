@@ -76,7 +76,7 @@ export default function Certificats() {
                 <a
                   href={cert.link}
                   target="_blank"
-                  className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-medium hover:opacity-90 transition"
+                  className="inline-block px-5 py-2 rounded-full bg-linear-to-r from-purple-500 to-cyan-500 text-white font-medium hover:opacity-90 transition"
                 >
                   View Certificate
                 </a>

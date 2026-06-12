@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { FaLaravel, FaNodeJs, FaGitAlt, FaFigma, FaReact, FaJava, FaJs  } from "react-icons/fa";
+import { FaLaravel, FaNodeJs, FaGitAlt, FaFigma, FaReact, FaJava, FaJs } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { SiMongodb, SiTypescript, SiPhp, SiPostgresql } from "react-icons/si";
 import { GrMysql, GrDocker } from "react-icons/gr";
@@ -100,7 +100,7 @@ export default function Skills() {
   }, [activeTab]);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-24 bg-gray-900 relative overflow-hidden">
+    <section id="skills" ref={sectionRef} className="py-16 bg-gray-900 relative overflow-hidden">
       <div className="absolute top-1/2 -left-48 w-96 h-96 bg-purple-800/10 rounded-full blur-3xl" />
       <div className="absolute top-1/2 -right-48 w-96 h-96 bg-cyan-800/10 rounded-full blur-3xl" />
 
@@ -128,16 +128,17 @@ export default function Skills() {
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center gap-3 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-10 px-2">
           {skillCategories.map((cat, i) => (
             <button
               key={cat.name}
               onClick={() => setActiveTab(i)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 ${
-                activeTab === i
+              className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm transition-all duration-300
+        w-full sm:w-auto
+        ${activeTab === i
                   ? "bg-linear-to-r from-purple-600 to-cyan-600 text-white shadow-lg shadow-purple-500/25"
                   : "bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 border border-white/5"
-              }`}
+                }`}
             >
               <span>{cat.icon}</span>
               {cat.name}
