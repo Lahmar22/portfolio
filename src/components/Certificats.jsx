@@ -1,8 +1,18 @@
 import { useState } from "react";
 import certificate from "../assets/certificatDocker.png";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Certificats() {
+  const { language } = useLanguage();
   const [certificats] = useState([
+    {
+      id: 2,
+      title: "Oracle Agentic AI Certified Foundations Associate",
+      issuer: "Oracle",
+      date: "2026",
+      image: null,
+      link: "https://www.oracle.com/education/",
+    },
     {
       id: 1,
       title: "Getting Started with Docker",
@@ -24,13 +34,13 @@ export default function Certificats() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">
-            Achievements
+            {language === "fr" ? "Réalisations" : "Achievements"}
           </p>
 
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            My{" "}
+            {language === "fr" ? "Mes " : "My "}
             <span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Certificates
+              {language === "fr" ? "certifications" : "Certificates"}
             </span>
           </h2>
 
@@ -49,11 +59,17 @@ export default function Certificats() {
 
               {/* Image */}
               <div className="h-52 overflow-hidden bg-gray-800">
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                />
+                {cert.image ? (
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-purple-600/30 to-cyan-600/30">
+                    <span className="text-5xl">🎓</span>
+                  </div>
+                )}
               </div>
 
 
@@ -78,7 +94,7 @@ export default function Certificats() {
                   target="_blank"
                   className="inline-block px-5 py-2 rounded-full bg-linear-to-r from-purple-500 to-cyan-500 text-white font-medium hover:opacity-90 transition"
                 >
-                  View Certificate
+                  {language === "fr" ? "Voir le certificat" : "View Certificate"}
                 </a>
 
               </div>

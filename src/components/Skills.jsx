@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { FaLaravel, FaNodeJs, FaGitAlt, FaFigma, FaReact, FaJava, FaJs } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { SiMongodb, SiTypescript, SiPhp, SiPostgresql } from "react-icons/si";
+import { SiMongodb, SiTypescript, SiPhp, SiPostgresql, SiPython } from "react-icons/si";
 import { GrMysql, GrDocker } from "react-icons/gr";
+import { useLanguage } from "../context/LanguageContext";
 
 const skillCategories = [
   {
@@ -28,6 +29,18 @@ const skillCategories = [
       { name: "PHP", level: 78, color: "from-indigo-500 to-purple-500" },
       { name: "PostgreSQL", level: 80, color: "from-sky-500 to-blue-500" },
       { name: "JEE", level: 72, color: "from-orange-500 to-red-500" },
+    ],
+  },
+  {
+    name: "AI & Data",
+    icon: "🤖",
+    skills: [
+      { name: "Python", level: 90, color: "from-yellow-400 to-blue-500" },
+      { name: "Scikit-learn", level: 82, color: "from-orange-400 to-red-500" },
+      { name: "Pandas / NumPy", level: 85, color: "from-blue-500 to-indigo-500" },
+      { name: "LLMs / NLP", level: 80, color: "from-purple-500 to-pink-500" },
+      { name: "Generative AI / Prompting", level: 82, color: "from-cyan-400 to-purple-500" },
+      { name: "AI / REST API Integration", level: 88, color: "from-violet-500 to-cyan-500" },
     ],
   },
   {
@@ -60,6 +73,7 @@ const techIcons = [
   { name: "PHP", emoji: <SiPhp className="text-indigo-500" /> },
   { name: "PostgreSQL", emoji: <SiPostgresql className="text-sky-500" /> },
   { name: "JEE", emoji: <FaJava className="text-orange-600" /> },
+  { name: "Python", emoji: <SiPython className="text-yellow-400" /> },
 ];
 
 function SkillBar({ name, level, color, animate }) {
@@ -80,6 +94,7 @@ function SkillBar({ name, level, color, animate }) {
 }
 
 export default function Skills() {
+  const { language } = useLanguage();
   const [activeTab, setActiveTab] = useState(0);
   const [animate, setAnimate] = useState(false);
   const sectionRef = useRef(null);
@@ -107,9 +122,9 @@ export default function Skills() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">What I Know</p>
+          <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">{language === "fr" ? "Ce que je maîtrise" : "What I Know"}</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            My <span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Skills</span>
+            {language === "fr" ? "Mes " : "My "}<span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">{language === "fr" ? "compétences" : "Skills"}</span>
           </h2>
           <div className="mt-4 w-16 h-1 bg-linear-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
         </div>
@@ -141,7 +156,9 @@ export default function Skills() {
                 }`}
             >
               <span>{cat.icon}</span>
-              {cat.name}
+              {language === "fr"
+                ? { Frontend: "Frontend", Backend: "Backend", "AI & Data": "IA & données", Tools: "Outils" }[cat.name]
+                : cat.name}
             </button>
           ))}
         </div>

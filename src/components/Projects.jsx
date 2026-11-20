@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-
-const filters = ["All", "Full Stack", "Frontend"];
+import { useLanguage } from "../context/LanguageContext";
 
 const gradients = [
   "from-purple-600/20 to-cyan-600/20",
@@ -12,6 +11,10 @@ const gradients = [
 ];
 
 export default function Projects() {
+  const { language } = useLanguage();
+  const filters = language === "fr"
+    ? [{ label: "Tous", value: "All" }, { label: "Full-Stack", value: "Full Stack" }, { label: "IA", value: "AI" }, { label: "Frontend", value: "Frontend" }]
+    : [{ label: "All", value: "All" }, { label: "Full Stack", value: "Full Stack" }, { label: "AI", value: "AI" }, { label: "Frontend", value: "Frontend" }];
   const [filter, setFilter] = useState("All");
   const [hovered, setHovered] = useState(null);
   const [projects, setProjects] = useState([]);
@@ -38,11 +41,13 @@ export default function Projects() {
           ? repo.topics
           : [repo.language].filter(Boolean),
         category:
-          repo.language === "JavaScript" ||
-            repo.language === "TypeScript" ||
-            repo.language === "React"
-            ? "Frontend"
-            : "Full Stack",
+          repo.language === "Python" ||
+            repo.language === "Jupyter Notebook"
+            ? "AI"
+            : repo.language === "JavaScript" ||
+              repo.language === "TypeScript"
+              ? "Frontend"
+              : "Full Stack",
         featured: repo.stargazers_count > 0,
         image: null,
       }));
@@ -89,7 +94,7 @@ export default function Projects() {
     return (
       <section className="py-24 bg-gray-950">
         <div className="text-center text-white">
-          Loading projects...
+          {language === "fr" ? "Chargement des projets..." : "Loading projects..."}
         </div>
       </section>
     );
@@ -106,9 +111,9 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">What I've Built</p>
+          <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">{language === "fr" ? "Ce que j'ai réalisé" : "What I've Built"}</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            My <span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Projects</span>
+            {language === "fr" ? "Mes " : "My "}<span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">{language === "fr" ? "projets" : "Projects"}</span>
           </h2>
           <div className="mt-4 w-16 h-1 bg-linear-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
         </div>
@@ -117,14 +122,14 @@ export default function Projects() {
         <div className="flex justify-center gap-3 mb-12">
           {filters.map((f) => (
             <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === f
+              key={f.value}
+              onClick={() => setFilter(f.value)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === f.value
                 ? "bg-linear-to-r from-purple-600 to-cyan-600 text-white shadow-lg shadow-purple-500/25"
                 : "bg-gray-800/60 border border-white/5 text-gray-400 hover:text-white hover:border-white/20"
                 }`}
             >
-              {f}
+              {f.label}
             </button>
           ))}
         </div>
@@ -164,7 +169,7 @@ export default function Projects() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
                     </svg>
-                    Code
+                    {language === "fr" ? "Code" : "Code"}
                   </a>
                   <a
                     href={project.demo}
@@ -173,14 +178,14 @@ export default function Projects() {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                    Live Demo
+                    {language === "fr" ? "Démo" : "Live Demo"}
                   </a>
                 </div>
 
                 {/* Featured badge */}
                 {project.featured && (
                   <div className="absolute top-3 left-3 bg-linear-to-r from-purple-600 to-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                    ⭐ Featured
+                    ⭐ {language === "fr" ? "À la une" : "Featured"}
                   </div>
                 )}
               </div>
@@ -242,7 +247,7 @@ export default function Projects() {
             <svg className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
             </svg>
-            View More on GitHub
+            {language === "fr" ? "Voir plus sur GitHub" : "View More on GitHub"}
           </a>
         </div>
       </div>

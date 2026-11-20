@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Contact() {
+  const { language } = useLanguage();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
@@ -70,13 +72,15 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">Get In Touch</p>
+          <p className="text-purple-400 font-mono text-sm uppercase tracking-widest mb-2">{language === "fr" ? "Me contacter" : "Get In Touch"}</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Contact <span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Me</span>
+            {language === "fr" ? "Contactez-" : "Contact "}<span className="bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">{language === "fr" ? "moi" : "Me"}</span>
           </h2>
           <div className="mt-4 w-16 h-1 bg-linear-to-r from-purple-500 to-cyan-500 rounded-full mx-auto" />
           <p className="text-gray-500 mt-4 max-w-lg mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you. Drop me a message!
+            {language === "fr"
+              ? "Vous avez un projet ou souhaitez collaborer ? Écrivez-moi."
+              : "Have a project in mind or want to collaborate? I'd love to hear from you. Drop me a message!"}
           </p>
         </div>
 
@@ -111,7 +115,7 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="lg:col-span-3 bg-gray-800/40 border border-white/5 rounded-2xl p-8 backdrop-blur-sm">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2" htmlFor="contact-name">Name</label>
+                <label className="block text-sm font-medium text-gray-400 mb-2" htmlFor="contact-name">{language === "fr" ? "Nom" : "Name"}</label>
                 <input
                   id="contact-name"
                   type="text"
@@ -119,7 +123,7 @@ export default function Contact() {
                   value={form.name}
                   onChange={handleChange}
                   required
-                  placeholder="Your name"
+                  placeholder={language === "fr" ? "Votre nom" : "Your name"}
                   className="w-full bg-gray-900/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/30 transition-all duration-200"
                 />
               </div>
@@ -138,7 +142,7 @@ export default function Contact() {
               </div>
             </div>
             <div className="mb-5">
-              <label className="block text-sm font-medium text-gray-400 mb-2" htmlFor="contact-subject">Subject</label>
+              <label className="block text-sm font-medium text-gray-400 mb-2" htmlFor="contact-subject">{language === "fr" ? "Sujet" : "Subject"}</label>
               <input
                 id="contact-subject"
                 type="text"
@@ -146,7 +150,7 @@ export default function Contact() {
                 value={form.subject}
                 onChange={handleChange}
                 required
-                placeholder="Project inquiry, collaboration..."
+                placeholder={language === "fr" ? "Demande de projet, collaboration..." : "Project inquiry, collaboration..."}
                 className="w-full bg-gray-900/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/30 transition-all duration-200"
               />
             </div>
@@ -159,7 +163,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={5}
-                placeholder="Tell me about your project..."
+                placeholder={language === "fr" ? "Parlez-moi de votre projet..." : "Tell me about your project..."}
                 className="w-full bg-gray-900/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/30 transition-all duration-200 resize-none"
               />
             </div>
@@ -174,7 +178,7 @@ export default function Contact() {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Message Sent!
+                  {language === "fr" ? "Message envoyé !" : "Message Sent!"}
                 </>
               ) : sending ? (
                 <>
@@ -182,14 +186,14 @@ export default function Contact() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
-                  Sending...
+                  {language === "fr" ? "Envoi..." : "Sending..."}
                 </>
               ) : (
                 <>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
-                  Send Message
+                  {language === "fr" ? "Envoyer le message" : "Send Message"}
                 </>
               )}
             </button>

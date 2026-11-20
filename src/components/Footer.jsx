@@ -1,4 +1,7 @@
+import { useLanguage } from "../context/LanguageContext";
+
 export default function Footer() {
+  const { language } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
@@ -52,10 +55,10 @@ export default function Footer() {
 
         <div className="mt-8 pt-6 border-t border-white/5 text-center">
           <p className="text-gray-600 text-sm">
-            © {year} <span className="text-gray-500">Zakariae Lahmar</span>. All rights reserved.
+            © {year} <span className="text-gray-500">Zakariae Lahmar</span>. {language === "fr" ? "Tous droits réservés." : "All rights reserved."}
           </p>
           <p className="text-gray-500 text-xs mt-2">
-            Crafted with passion | <a href="#contact" className="text-purple-400 hover:text-purple-300 transition-colors">Get in Touch</a>
+            {language === "fr" ? "Créé avec passion" : "Crafted with passion"} | <a href="#contact" className="text-purple-400 hover:text-purple-300 transition-colors">{language === "fr" ? "Me contacter" : "Get in Touch"}</a>
           </p>
         </div>
       </div>

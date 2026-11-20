@@ -1,23 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import avatarImg from "../assets/image.jpeg";
+import { useLanguage } from "../context/LanguageContext";
 
 const roles = [
+  "AI Developer",
+  "LLM & Generative AI Developer",
+  "Machine Learning Engineer",
   "Full Stack Developer",
-  "Java & JEE Developer",
-  "Laravel & PHP Developer",
-  "Node.js Developer",
-  "Spring Boot Developer",
-  "UI/UX Enthusiast",
-  "Problem Solver"
+  "React & Node.js Developer",
 ];
 
 export default function Hero() {
+  const { language } = useLanguage();
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [typing, setTyping] = useState(true);
 
+  const translatedRoles = useMemo(() => language === "fr"
+    ? ["Développeur IA", "Développeur LLM & IA générative", "Ingénieur Machine Learning", "Développeur Full-Stack", "Développeur React & Node.js"]
+    : roles, [language]);
+
   useEffect(() => {
-    const current = roles[roleIndex];
+    const current = translatedRoles[roleIndex];
     if (typing) {
       if (displayed.length < current.length) {
         const t = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 80);
@@ -35,7 +39,7 @@ export default function Hero() {
         setTyping(true);
       }
     }
-  }, [displayed, typing, roleIndex]);
+  }, [displayed, typing, roleIndex, translatedRoles]);
 
   return (
     <section
@@ -61,12 +65,12 @@ export default function Hero() {
         {/* Text content */}
         <div className="flex-1 text-center md:text-left">
           <p className="text-purple-400 font-mono text-sm md:text-base mb-3 tracking-widest uppercase">
-            👋 Hello, World! I'm
+            {language === "fr" ? "👋 Bonjour ! Je suis" : "👋 Hello, World! I'm"}
           </p>
           <h1 className="text-xl md:text-7xl font-extrabold text-white leading-tight mb-4">
             LAHMAR Zakariae
             <span className="block bg-linear-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              Full Stack Web Developer
+              {language === "fr" ? "Développeur Full-Stack & IA" : "Full-Stack & AI Developer"}
             </span>
           </h1>
 
@@ -81,7 +85,9 @@ export default function Hero() {
           </div>
 
           <p className="text-gray-400 text-lg leading-relaxed max-w-lg mx-auto md:mx-0 mb-8">
-            Focused on crafting beautiful, performant web experiences. I turn ideas into elegant digital solutions using modern technologies.
+            {language === "fr"
+              ? "Je crée des applications intelligentes et évolutives en combinant le développement Full-Stack moderne avec le Machine Learning, les LLM et l'IA générative."
+              : "I build intelligent, scalable applications by combining modern full-stack development with Machine Learning, LLMs and Generative AI."}
           </p>
 
           {/* CTA Buttons */}
@@ -91,14 +97,14 @@ export default function Hero() {
               onClick={(e) => { e.preventDefault(); document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }); }}
               className="px-8 py-3.5 rounded-full bg-linear-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-xl shadow-purple-500/30"
             >
-              View My Work
+              {language === "fr" ? "Voir mes projets" : "View My Work"}
             </a>
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
               className="px-8 py-3.5 rounded-full border border-purple-500/50 text-gray-300 font-semibold hover:border-purple-400 hover:text-white hover:bg-purple-500/10 transition-all duration-300"
             >
-              Contact Me
+              {language === "fr" ? "Me contacter" : "Contact Me"}
             </a>
           </div>
 
@@ -143,11 +149,11 @@ export default function Hero() {
             <div className="absolute inset-4 rounded-full bg-linear-to-br from-purple-600/30 to-cyan-600/30 blur-xl" />
             {/* Image */}
             <div className="absolute inset-4 rounded-full overflow-hidden border-2 border-purple-500/50 shadow-2xl shadow-purple-500/30">
-              <img src={avatarImg} alt="Safiy - Developer" className="w-full h-full object-cover" />
+              <img src={avatarImg} alt="Zakariae Lahmar - Full-Stack & AI Developer" className="w-full h-full object-cover" />
             </div>
             {/* Floating badges */}
             <div className="absolute -top-3 -right-3 bg-gray-900 border border-purple-500/50 rounded-xl px-3 py-1.5 shadow-lg">
-              <span className="text-xs font-semibold text-purple-400">1+ Years</span>
+              <span className="text-xs font-semibold text-purple-400">Full-Stack</span>
             </div>
             <div className="absolute -bottom-3 -left-3 bg-gray-900 border border-cyan-500/50 rounded-xl px-3 py-1.5 shadow-lg">
               <span className="text-xs font-semibold text-cyan-400">30+ Projects</span>

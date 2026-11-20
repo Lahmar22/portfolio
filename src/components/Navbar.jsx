@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import cv from "../assets/lahmarcv.pdf";
+import { useLanguage } from "../context/LanguageContext";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -11,6 +12,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const { language, setLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("home");
@@ -40,6 +42,10 @@ export default function Navbar() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const labels = language === "fr"
+    ? ["Accueil", "À propos", "Compétences", "Projets", "Certificats", "Contact"]
+    : ["Home", "About", "Skills", "Projects", "Certificates", "Contact"];
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
@@ -59,7 +65,7 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.map((link, index) => (
             <li key={link.href}>
               <a
                 href={link.href}
@@ -69,7 +75,7 @@ export default function Navbar() {
                     : "text-gray-400 hover:text-white"
                   }`}
               >
-                {link.label}
+                {labels[index]}
                 <span
                   className={`absolute -bottom-1 left-0 h-0.5 bg-linear-to-r from-purple-400 to-cyan-400 transition-all duration-300 ${active === link.href.slice(1) ? "w-full" : "w-0 group-hover:w-full"
                     }`}
@@ -80,14 +86,29 @@ export default function Navbar() {
         </ul>
 
         {/* CTA */}
+        <div className="flex items-center gap-2 ml-auto md:ml-0">
+        <label className="flex items-center gap-2 h-10 px-3 rounded-xl border border-white/10 bg-gray-900/70 text-gray-300 hover:border-purple-500/50 transition-all duration-300">
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="cursor-pointer appearance-none bg-transparent pr-5 text-sm font-semibold outline-none"
+            aria-label={language === "en" ? "Select language" : "Choisir la langue"}
+          >
+            <option value="en" className="bg-gray-900 text-white">EN</option>
+            <option value="fr" className="bg-gray-900 text-white">FR</option>
+          </select>
+          <svg className="pointer-events-none -ml-5 w-3 h-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 8l4 4 4-4" />
+          </svg>
+        </label>
         <a
           href={cv} download
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-linear-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25"
+          className="hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-full bg-linear-to-r from-purple-600 to-cyan-600 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
-          Download CV
+          {language === "fr" ? "Télécharger le CV" : "Download CV"}
         </a>
 
         {/* Hamburger */}
@@ -100,6 +121,7 @@ export default function Navbar() {
           <span className={`block h-0.5 w-6 bg-gray-300 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
           <span className={`block h-0.5 w-6 bg-gray-300 transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -108,14 +130,14 @@ export default function Navbar() {
           }`}
       >
         <ul className="flex flex-col px-6 py-4 gap-4">
-          {navLinks.map((link) => (
+          {navLinks.map((link, index) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
                 className="text-gray-300 hover:text-purple-400 text-sm font-medium transition-colors duration-200"
               >
-                {link.label}
+                {labels[index]}
               </a>
             </li>
           ))}

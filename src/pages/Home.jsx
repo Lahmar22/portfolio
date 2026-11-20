@@ -7,21 +7,23 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Certificats from "../components/Certificats";
 import { Analytics } from '@vercel/analytics/react';
+import { LanguageProvider } from "../context/LanguageContext";
 
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Certificats />
-      <Contact />
-      <Footer />
-
-      <Analytics />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-gray-950 text-white">
+        <Navbar />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Certificats />
+        <Contact />
+        <Footer />
+        <Analytics />
+      </div>
+    </LanguageProvider>
   );
 }
