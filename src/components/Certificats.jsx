@@ -1,5 +1,6 @@
 import { useState } from "react";
 import certificate from "../assets/certificatDocker.png";
+import certife from "../assets/certife.jpg";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Certificats() {
@@ -10,8 +11,8 @@ export default function Certificats() {
       title: "Oracle Agentic AI Certified Foundations Associate",
       issuer: "Oracle",
       date: "2026",
-      image: null,
-      link: "https://www.oracle.com/education/",
+      image: certife,
+      link: "https://catalog-education.oracle.com/ords/certview/sharebadge_m?id=9F4BFE04628C298CC2E9C72163F67BED7A401ACE61D661A2362B3656218C169E",
     },
     {
       id: 1,
