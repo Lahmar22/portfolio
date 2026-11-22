@@ -6,6 +6,8 @@ const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
   { label: "Projects", href: "#projects" },
   { label: "Certificats", href: "#certificats" },
   { label: "Contact", href: "#contact" },
@@ -43,8 +45,8 @@ export default function Navbar() {
   };
 
   const labels = language === "fr"
-    ? ["Accueil", "À propos", "Compétences", "Projets", "Certificats", "Contact"]
-    : ["Home", "About", "Skills", "Projects", "Certificates", "Contact"];
+    ? ["Accueil", "À propos", "Compétences", "Expérience", "Formation", "Projets", "Certificats", "Contact"]
+    : ["Home", "About", "Skills", "Experience", "Education", "Projects", "Certificates", "Contact"];
 
   return (
     <nav

@@ -6,6 +6,8 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Certificats from "../components/Certificats";
+import Education from "../components/Education";
+import Experience from "../components/Experience";
 import { Analytics } from '@vercel/analytics/react';
 import { LanguageProvider } from "../context/LanguageContext";
 
@@ -18,6 +20,8 @@ export default function Home() {
         <Hero />
         <About />
         <Skills />
+        <Experience />
+        <Education />
         <Projects />
         <Certificats />
         <Contact />
